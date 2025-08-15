@@ -18,6 +18,7 @@ public class InventoryService {
 
 
     public Product addProduct(String name, String category, double price, int quantity) {
+        if (price < 0) throw new IllegalArgumentException("Цена не может быть отрицательной");
         Product product = new Product(name, category, price, quantity);
         inventory.put(product.getId(), product);
         return product;

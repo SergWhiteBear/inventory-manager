@@ -45,12 +45,7 @@ public class Main {
                 case "4" -> service.getAllProducts().forEach(System.out::println);
                 case "0" -> {
                     LOGGER.info("Завершение работы программы");
-                    // Сохраняем склад в файл
-                    InventoryFileManager.saveInventory(
-                            service.getAllProducts().stream()
-                                    .collect(Collectors.toMap(Product::getId, p -> p)),
-                            fileName
-                    );
+                    saveToFile(service, fileName);
                     System.out.println("Склад успешно сохранён в " + fileName);
                     return;
                 }
